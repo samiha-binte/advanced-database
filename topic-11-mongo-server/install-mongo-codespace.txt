@@ -1,0 +1,383 @@
+Script started on 2025-03-27 00:36:47+00:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="54" LINES="13"]
+$ ls
+typescript
+$ # get server up do t[K[K[K[Kto date
+$ lsb_release -a
+No LSB modules are available.
+Distributor ID:	Ubuntu
+Description:	Ubuntu 20.04.6 LTS
+Release:	20.04
+Codename:	focal
+$ # get the key for the catalong[K[Kg
+$ wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+OK
+$ [K$ [K$ [K$ [K$ [K$ [K$ [K$ [K$ [K$ [K$ [K$ [K$ [K$ [K$ # get the lost [K[K[K[Kist file for mongoDB ser u[K[K[Kt y[Kup
+$ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse
+$ # update catalogs
+$ sudo apt-get update
+0% [Working]            Get:1 http://security.ubuntu.com/ubuntu focal-security InRelease [128 kB]
+0% [Waiting for headers] [1 InRelease 8192 B/128 kB 6%] [Connected to p0% [Waiting for headers] [Connected to repo.anaconda.com (104.16.32.241                                                                       Get:2 https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 InRelease [4009 B]
+0% [Waiting for headers] [Waiting for headers] [Waiting for headers] [20% [Waiting for headers] [Waiting for headers] [Waiting for headers] [W                                                                       Get:3 https://dl.yarnpkg.com/debian stable InRelease [17.1 kB]
+0% [Waiting for headers] [Waiting for headers] [Waiting for headers] [3                                                                       0% [Waiting for headers] [Waiting for headers] [Waiting for headers]                                                                    Get:4 https://packages.microsoft.com/repos/microsoft-ubuntu-focal-prod focal InRelease [3632 B]
+0% [Waiting for headers] [Waiting for headers] [4 InRelease 3632 B/3632                                                                       0% [Waiting for headers] [Waiting for headers]                                              Get:5 https://repo.anaconda.com/pkgs/misc/debrepo/conda stable InRelease [3961 B]
+0% [Waiting for headers] [5 InRelease 3961 B/3961 B 100%]                                                         0% [Waiting for headers]0% [Waiting for headers]                        Get:6 http://security.ubuntu.com/ubuntu focal-security/main amd64 Packages [4289 kB]
+0% [Waiting for headers] [6 Packages 0 B/4289 kB 0%] [Connecting to pac0% [Waiting for headers] [6 Packages 2601 kB/4289 kB 61%] [Connecting t0% [Waiting for headers] [Connecting to packagecloud.io (52.9.187.70)]                                                                        Get:7 https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4/multiverse arm64 Packages [81.8 kB]
+                                                                       0% [Waiting for headers] [Connected to packagecloud.io (52.9.187.70)]0% [6 Packages store 0 B] [Waiting for headers] [Connected to packagecl                                                                       Get:8 http://security.ubuntu.com/ubuntu focal-security/universe amd64 Packages [1304 kB]
+0% [6 Packages store 0 B] [Waiting for headers] [8 Packages 0 B/1304 kB                                                                       Get:9 https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4/multiverse amd64 Packages [91.6 kB]
+0% [6 Packages store 0 B] [Waiting for headers] [8 Packages 118 kB/13040% [6 Packages store 0 B] [Waiting for headers] [8 Packages 301 kB/13040% [6 Packages store 0 B] [Waiting for headers] [Connected to packagecl                                                                       Get:10 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 Packages [33.2 kB]
+0% [6 Packages store 0 B] [Waiting for headers] [10 Packages 0 B/33.2 k                                                                       Get:11 http://security.ubuntu.com/ubuntu focal-security/restricted amd64 Packages [4483 kB]
+0% [6 Packages store 0 B] [Waiting for headers] [11 Packages 65.5 kB/440% [6 Packages store 0 B] [Waiting for headers] [11 Packages 3801 kB/440% [6 Packages store 0 B] [Waiting for headers] [Connected to packagecl                                                                       Get:12 https://dl.yarnpkg.com/debian stable/main amd64 Packages [11.8 kB]
+0% [6 Packages store 0 B] [Waiting for headers] [Connected to packagecl0% [6 Packages store 0 B] [Waiting for headers] [Connected to packagecl0% [6 Packages store 0 B] [Waiting for headers] [Waiting for headers] [                                                                       Get:13 https://dl.yarnpkg.com/debian stable/main all Packages [11.8 kB]
+0% [6 Packages store 0 B] [Waiting for headers] [Waiting for headers] [                                                                       0% [6 Packages store 0 B] [Waiting for headers] [Waiting for headers]                                                                     Get:14 https://packages.microsoft.com/repos/microsoft-ubuntu-focal-prod focal/main amd64 Packages [341 kB]
+0% [6 Packages store 0 B] [Waiting for headers] [Waiting for headers] [                                                                       0% [6 Packages store 0 B] [Waiting for headers] [Waiting for headers]                                                                     Get:15 https://packages.microsoft.com/repos/microsoft-ubuntu-focal-prod focal/main all Packages [2938 B]
+0% [6 Packages store 0 B] [Waiting for headers] [Waiting for headers] [                                                                       0% [6 Packages store 0 B] [Waiting for headers] [Waiting for headers]0% [6 Packages store 0 B] [Waiting for headers] [Waiting for headers]0% [6 Packages store 0 B] [Waiting for headers] [Waiting for headers]                                                                     Get:17 https://repo.anaconda.com/pkgs/misc/debrepo/conda stable/main amd64 Packages [4557 B]
+0% [6 Packages store 0 B] [Waiting for headers] [17 Packages 4557 B/455                                                                       0% [6 Packages store 0 B] [Waiting for headers]                                               0% [Waiting for headers]0% [7 Packages store 0 B] [Waiting for headers]                                               0% [Waiting for headers]0% [9 Packages store 0 B] [Waiting for headers]                                               0% [Waiting for headers]0% [8 Packages store 0 B] [Waiting for headers]0% [Connecting to d3fo0g5hm7lbuv.cloudfront.net] [Waiting for headers]0% [Connecting to d3fo0g5hm7lbuv.cloudfront.net] [10 Packages store 0 B                                                                       0% [Connecting to d3fo0g5hm7lbuv.cloudfront.net] [Waiting for headers]0% [Connecting to d3fo0g5hm7lbuv.cloudfront.net] [11 Packages store 0 B                                                                       Get:18 http://archive.ubuntu.com/ubuntu focal InRelease [265 kB]
+0% [Waiting for headers] [11 Packages store 0 B] [18 InRelease 14.0 kB/                                                                       0% [Waiting for headers] [18 InRelease 14.0 kB/265 kB 5%]0% [Waiting for headers] [18 InRelease 14.0 kB/265 kB 5%]0% [Waiting for headers] [13 Packages store 0 B] [18 InRelease 14.0 kB/                                                                       0% [Waiting for headers] [18 InRelease 14.0 kB/265 kB 5%]0% [Waiting for headers] [14 Packages store 0 B] [18 InRelease 14.0 kB/                                                                       Get:16 https://packagecloud.io/github/git-lfs/ubuntu focal InRelease [29.1 kB]
+0% [16 InRelease 0 B/29.1 kB 0%] [14 Packages store 0 B] [18 InRelease                                                                        0% [14 Packages store 0 B] [18 InRelease 42.5 kB/265 kB 16%]                                                            0% [18 InRelease 215 kB/265 kB 81%]0% [15 Packages store 0 B] [18 InRelease 215 kB/265 kB 81%]                                                           0% [18 InRelease 227 kB/265 kB 86%]0% [17 Packages store 0 B] [18 InRelease 227 kB/265 kB 86%]                                                           0% [18 InRelease 240 kB/265 kB 90%]                                   0% [Waiting for headers]                        Get:19 http://archive.ubuntu.com/ubuntu focal-updates InRelease [128 kB]
+0% [19 InRelease 61.1 kB/128 kB 48%]                                    0% [Working]            Get:20 http://archive.ubuntu.com/ubuntu focal-backports InRelease [128 kB]
+0% [20 InRelease 0 B/128 kB 0%]                               0% [Working]0% [Working]0% [Connected to packagecloud.io (52.9.187.70)]                                               Get:21 http://archive.ubuntu.com/ubuntu focal/main amd64 Packages [1275 kB]
+0% [21 Packages 15.5 kB/1275 kB 1%] [Connected to packagecloud.io (52.9                                                                       0% [Connected to packagecloud.io (52.9.187.70)]0% [21 Packages store 0 B] [Connected to packagecloud.io (52.9.187.70)]                                                                       Get:22 http://archive.ubuntu.com/ubuntu focal/multiverse amd64 Packages [177 kB]
+0% [21 Packages store 0 B] [22 Packages 0 B/177 kB 0%] [Connected to pa                                                                       Get:23 http://archive.ubuntu.com/ubuntu focal/universe amd64 Packages [11.3 MB]
+0% [21 Packages store 0 B] [23 Packages 123 kB/11.3 MB 1%] [Connected t0% [21 Packages store 0 B] [23 Packages 2614 kB/11.3 MB 23%] [Connected                                                                       0% [23 Packages 7660 kB/11.3 MB 68%] [Waiting for headers]0% [22 Packages store 0 B] [23 Packages 7660 kB/11.3 MB 68%] [Waiting f                                                                       0% [23 Packages 8454 kB/11.3 MB 75%] [Waiting for headers]                                                          0% [23 Packages 10.7 MB/11.3 MB 94%]                                    0% [Waiting for headers]0% [Waiting for headers] [23 Packages store 0 B]                                                Get:25 http://archive.ubuntu.com/ubuntu focal/restricted amd64 Packages [33.4 kB]
+0% [Waiting for headers] [23 Packages store 0 B] [25 Packages 33.4 kB/3                                                                       0% [Waiting for headers] [23 Packages store 0 B] [Waiting for headers]                                                                      Get:26 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [4776 kB]
+0% [Waiting for headers] [23 Packages store 0 B] [26 Packages 184 kB/4776% [Waiting for headers] [23 Packages store 0 B] [26 Packages 2122 kB/                                                                       82% [Waiting for headers] [23 Packages store 0 B]                                                 Get:27 http://archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 Packages [36.8 kB]
+82% [Waiting for headers] [23 Packages store 0 B] [27 Packages 0 B/36.8                                                                       82% [Waiting for headers] [23 Packages store 0 B]                                                 Get:28 http://archive.ubuntu.com/ubuntu focal-updates/restricted amd64 Packages [4681 kB]
+82% [Waiting for headers] [23 Packages store 0 B] [28 Packages 0 B/4681                                                                       93% [Waiting for headers] [23 Packages store 0 B]                                                 Get:29 http://archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [1597 kB]
+93% [Waiting for headers] [23 Packages store 0 B] [29 Packages 65.5 kB/                                                                       96% [Waiting for headers] [23 Packages store 0 B]                                                 Get:30 http://archive.ubuntu.com/ubuntu focal-backports/main amd64 Packages [55.2 kB]
+97% [Waiting for headers] [23 Packages store 0 B] [30 Packages 55.2 kB/                                                                       97% [Waiting for headers] [23 Packages store 0 B]                                                 Get:31 http://archive.ubuntu.com/ubuntu focal-backports/universe amd64 Packages [28.6 kB]
+97% [Waiting for headers] [23 Packages store 0 B] [31 Packages 28.6 kB/                                                                       97% [Waiting for headers] [23 Packages store 0 B]                                                 Get:24 https://packagecloud.io/github/git-lfs/ubuntu focal/main amd64 Packages [4064 B]
+97% [24 Packages 4064 B/4064 B 100%] [23 Packages store 0 B]                                                            97% [23 Packages store 0 B]                           97% [Working]97% [25 Packages store 0 B]                           97% [Working]97% [26 Packages store 0 B]                           98% [Working]98% [27 Packages store 0 B]                           98% [Working]98% [28 Packages store 0 B]                           98% [Working]98% [29 Packages store 0 B]                           99% [Working]99% [30 Packages store 0 B]                           99% [Working]99% [31 Packages store 0 B]                           100% [Working]100% [24 Packages store 0 B]                            100% [Working]              Fetched 35.4 MB in 3s (13.6 MB/s)
+Reading package lists... 0%Reading package lists... 0%Reading package lists... 0%Reading package lists... 3%Reading package lists... 3%Reading package lists... 3%Reading package lists... 3%Reading package lists... 35%Reading package lists... 35%Reading package lists... 35%Reading package lists... 35%Reading package lists... 49%Reading package lists... 49%Reading package lists... 50%Reading package lists... 63%Reading package lists... 63%Reading package lists... 67%Reading package lists... 67%Reading package lists... 67%Reading package lists... 67%Reading package lists... 67%Reading package lists... 67%Reading package lists... 67%Reading package lists... 67%Reading package lists... 79%Reading package lists... 79%Reading package lists... 93%Reading package lists... 93%Reading package lists... 96%Reading package lists... 96%Reading package lists... 97%Reading package lists... 97%Reading package lists... 97%Reading package lists... 97%Reading package lists... 97%Reading package lists... 97%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... Done
+$ sudo apt-get install -y mongodb-org
+Reading package lists... 0%Reading package lists... 0%Reading package lists... 0%Reading package lists... 3%Reading package lists... 3%Reading package lists... 3%Reading package lists... 3%Reading package lists... 35%Reading package lists... 35%Reading package lists... 35%Reading package lists... 35%Reading package lists... 49%Reading package lists... 49%Reading package lists... 63%Reading package lists... 63%Reading package lists... 67%Reading package lists... 67%Reading package lists... 67%Reading package lists... 67%Reading package lists... 67%Reading package lists... 67%Reading package lists... 67%Reading package lists... 67%Reading package lists... 71%Reading package lists... 79%Reading package lists... 79%Reading package lists... 93%Reading package lists... 93%Reading package lists... 96%Reading package lists... 96%Reading package lists... 97%Reading package lists... 97%Reading package lists... 97%Reading package lists... 97%Reading package lists... 97%Reading package lists... 97%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+The following additional packages will be installed:
+  mongodb-database-tools mongodb-org-database-tools-extra
+  mongodb-org-mongos mongodb-org-server mongodb-org-shell
+  mongodb-org-tools
+The following NEW packages will be installed:
+  mongodb-database-tools mongodb-org mongodb-org-database-tools-extra
+  mongodb-org-mongos mongodb-org-server mongodb-org-shell
+  mongodb-org-tools
+0 upgraded, 7 newly installed, 0 to remove and 78 not upgraded.
+Need to get 96.8 MB of archives.
+After this operation, 203 MB of additional disk space will be used.
+0% [Working]            Get:1 https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4/multiverse amd64 mongodb-database-tools amd64 100.10.0 [46.5 MB]
+0% [1 mongodb-database-tools 0 B/46.5 MB 0%]38% [1 mongodb-database-tools 46.5 MB/46.5 MB 100%]                                                   41% [Waiting for headers]                         Get:2 https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4/multiverse amd64 mongodb-org-shell amd64 4.4.29 [13.4 MB]
+41% [2 mongodb-org-shell 160 kB/13.4 MB 1%]                                           Get:3 https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4/multiverse amd64 mongodb-org-server amd64 4.4.29 [20.8 MB]
+55% [3 mongodb-org-server 192 kB/20.8 MB 1%]                                            Get:4 https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4/multiverse amd64 mongodb-org-mongos amd64 4.4.29 [16.1 MB]
+75% [4 mongodb-org-mongos 50.3 kB/16.1 MB 0%]                                             Get:5 https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4/multiverse amd64 mongodb-org-database-tools-extra amd64 4.4.29 [7756 B]
+                                             Get:6 https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4/multiverse amd64 mongodb-org-tools amd64 4.4.29 [2896 B]
+                                             97% [Waiting for headers]                         Get:7 https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4/multiverse amd64 mongodb-org amd64 4.4.29 [3524 B]
+97% [7 mongodb-org 0 B/3524 B 0%]                                 100% [Working]              Fetched 96.8 MB in 1s (80.4 MB/s)
+Selecting previously unselected package mongodb-database-tools.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 70107 files and directories currently installed.)
+Preparing to unpack .../0-mongodb-database-tools_100.10.0_amd64.deb ...
+Unpacking mongodb-database-tools (100.10.0) ...
+Selecting previously unselected package mongodb-org-shell.
+Preparing to unpack .../1-mongodb-org-shell_4.4.29_amd64.deb ...
+Unpacking mongodb-org-shell (4.4.29) ...
+Selecting previously unselected package mongodb-org-server.
+Preparing to unpack .../2-mongodb-org-server_4.4.29_amd64.deb ...
+Unpacking mongodb-org-server (4.4.29) ...
+Selecting previously unselected package mongodb-org-mongos.
+Preparing to unpack .../3-mongodb-org-mongos_4.4.29_amd64.deb ...
+Unpacking mongodb-org-mongos (4.4.29) ...
+Selecting previously unselected package mongodb-org-database-tools-extra.
+Preparing to unpack .../4-mongodb-org-database-tools-extra_4.4.29_amd64.deb ...
+Unpacking mongodb-org-database-tools-extra (4.4.29) ...
+Selecting previously unselected package mongodb-org-tools.
+Preparing to unpack .../5-mongodb-org-tools_4.4.29_amd64.deb ...
+Unpacking mongodb-org-tools (4.4.29) ...
+Selecting previously unselected package mongodb-org.
+Preparing to unpack .../6-mongodb-org_4.4.29_amd64.deb ...
+Unpacking mongodb-org (4.4.29) ...
+Setting up mongodb-org-server (4.4.29) ...
+Adding system user `mongodb' (UID 106) ...
+Adding new user `mongodb' (UID 106) with group `nogroup' ...
+Not creating home directory `/home/mongodb'.
+Adding group `mongodb' (GID 108) ...
+Done.
+Adding user `mongodb' to group `mongodb' ...
+Adding user mongodb to group mongodb
+Done.
+System has not been booted with systemd as init system (PID 1). Can't operate.
+Failed to connect to bus: Host is down
+Setting up mongodb-org-shell (4.4.29) ...
+Setting up mongodb-database-tools (100.10.0) ...
+Setting up mongodb-org-mongos (4.4.29) ...
+Setting up mongodb-org-database-tools-extra (4.4.29) ...
+Setting up mongodb-org-tools (4.4.29) ...
+Setting up mongodb-org (4.4.29) ...
+Processing triggers for man-db (2.9.1-1) ...
+$ sudo mkdir -p /data/db
+$ sudo chown $(id -u) /data/db
+$ mongod --fork --logpath /var/log/mongodb.log
+about to fork child process, waiting until server is ready for connections.
+forked process: 9324
+ERROR: child process failed, exited with 1
+To see additional information in this output, start without the "--fork" option.
+$ # starting did [Kn;t wor[K[K[K[K[K[K't work, start without fork to see error messages
+$ # starting didn't work, start without fork to see error messages[C[C[20Pmongod --fork --logpath /var/log/mongodb.log[1P[1P[1P[1P[1P[C[1P[C[1P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+{"t":{"$date":"2025-03-27T00:46:16.640Z"},"s":"F",  "c":"CONTROL",  "id":20574,   "ctx":"main","msg":"Error during global initialization","attr":{"error":{"code":38,"codeName":"FileNotOpen","errmsg":"Failed to open /var/log/mongodb.log"}}}
+$ touch /var/log/mongodb.log
+touch: cannot touch '/var/log/mongodb.log': Permission denied
+$ sudo [K[K[K[K[Kls -la /var
+total 64
+drwxr-xr-x 1 root root  4096 Feb 18 01:46 .
+drwxr-xr-x 1 root root  4096 Mar 27 00:44 ..
+drwxr-xr-x 2 root root  4096 Apr 15  2020 backups
+drwxr-xr-x 1 root root  4096 Jan 24 00:21 cache
+drwxr-xr-x 1 root root  4096 Mar 27 00:43 lib
+drwxrwsr-x 2 root staff 4096 Apr 15  2020 local
+lrwxrwxrwx 1 root root     9 Oct 11 02:03 lock -> /run/lock
+drwxr-xr-x 1 root root  4096 Mar 27 00:43 log
+drwxrwsr-x 2 root mail  4096 Oct 11 02:03 mail
+drwxr-xr-x 2 root root  4096 Oct 11 02:03 opt
+lrwxrwxrwx 1 root root     4 Oct 11 02:03 run -> /run
+drwxr-xr-x 2 root root  4096 Oct 11 02:03 spool
+drwxrwxrwt 1 root root  4096 Mar  6 02:31 tmp
+drwxr-xr-x 2 root root  4096 Feb 18 01:46 vscode-remote
+$ ch[K[Ksudo chmod v[K/var/log/[K[C-/var/logr/var/log /var/log+/var/log[1P/var/logo/var/logg/var/logw/var/log+/var/logw/var/log /var/log[C[C[C[C[C[C[C[C
+chmod: cannot access 'ogw+w': No such file or directory
+$ sudo chmod -r ogw+w /var/log[1P[1P[1P[C[C[C[C[C[C-/var/logr/var/log /var/log[C[C[C[C[C[C[C[C
+chmod: cannot access 'ogw+w': No such file or directory
+$ cmod[K[K[K[Kchmod 777 [K[K[K[K-r 777 /var/log
+chmod: cannot access '777': No such file or directory
+chmod: changing permissions of '/var/log': Operation not permitted
+$ chmod -r 777 /var/log[1@s[1@u[1@d[1@o[1@ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+chmod: cannot access '777': No such file or directory
+$ sudo chmod -r 777 /var/log[C[C[1P /var/log[1P /var/log[1P /var/log[1P/var/log[1@7[1@7[1@7[1@ [C[C[C[C[C[C[C[C[C[C[C
+chmod: cannot access '777': No such file or directory
+$ chmod ==[K[K--help
+Usage: chmod [OPTION]... MODE[,MODE]... FILE...
+  or:  chmod [OPTION]... OCTAL-MODE FILE...
+  or:  chmod [OPTION]... --reference=RFILE FILE...
+Change the mode of each FILE to MODE.
+With --reference, change the mode of each FILE to that of RFILE.
+
+  -c, --changes          like verbose but report only when a change is made
+  -f, --silent, --quiet  suppress most error messages
+  -v, --verbose          output a diagnostic for every file processed
+      --no-preserve-root  do not treat '/' specially (the default)
+      --preserve-root    fail to operate recursively on '/'
+      --reference=RFILE  use RFILE's mode instead of MODE values
+  -R, --recursive        change files and directories recursively
+      --help     display this help and exit
+      --version  output version information and exit
+
+Each MODE is of the form '[ugoa]*([-+=]([rwxXst]*|[ugo]))+|[-+=][0-7]+'.
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report chmod translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/chmod>
+or available locally via: info '(coreutils) chmod invocation'
+$ chmod -R ugo [K+w /var/log
+chmod: changing permissions of '/var/log': Operation not permitted
+chmod: cannot read directory '/var/log': Permission denied
+$ chmod -R ugo+w /var/log[1@s[1@u[1@d[1@o[1@ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+$ sudo chmod -R ugo+w /var/log[C[C[5P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C-help[K[C[Csudo chmod 777 -r /var/log[C[C[C[C[C[C[C[C[C[C[C[C[C-r 777[C[C[C[C[C[C[C[C[C[C[C[5P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[7@sudo chmod ogw+w -r[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C-r ogw+w[C[C[C[C[C[C[C[C[C[C[C[17Pls -la /var[C[Ctouch /var/log/mongodb.log[C[C[11@mongod --logpat[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C# starting didn't work, start without fork to see error messages[C[C[27Pmongod --logpath /var/log/mongodb.log
+^C$ mongod --logpath /var/log/mongodb.log[C[C[9Psudo chmod -R ugo+w /var/log[C[C[5P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C-help[K[C[Csudo chmod 777 -r /var/log[C[C[C[C[C[C[C[C[C[C[C[C[C-r 777[C[C[C[C[C[C[C[C[C[C[C[5P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[7@sudo chmod ogw+w -r[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C-r ogw+w[C[C[C[C[C[C[C[C[C[C[C[17Pls -la /var[C[Ctouch /var/log/mongodb.log[C[C[11@mongod --logpat[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C# starting didn't work, start without fork to see error messages[C[C[20Pmongod --fork --logpath /var/log/mongodb.log
+about to fork child process, waiting until server is ready for connections.
+forked process: 12730
+child process started successfully, parent exiting
+$ mongod --version
+db version v4.4.29
+Build Info: {
+    "version": "4.4.29",
+    "gitVersion": "f4dda329a99811c707eb06d05ad023599f9be263",
+    "openSSLVersion": "OpenSSL 1.1.1f  31 Mar 2020",
+    "modules": [],
+    "allocator": "tcmalloc",
+    "environment": {
+        "distmod": "ubuntu2004",
+        "distarch": "x86_64",
+        "target_arch": "x86_64"
+    }
+}
+$ [K$ [K$ [K$ [K$ [K$ mongo --version
+MongoDB shell version v4.4.29
+Build Info: {
+    "version": "4.4.29",
+    "gitVersion": "f4dda329a99811c707eb06d05ad023599f9be263",
+    "openSSLVersion": "OpenSSL 1.1.1f  31 Mar 2020",
+    "modules": [],
+    "allocator": "tcmalloc",
+    "environment": {
+        "distmod": "ubuntu2004",
+        "distarch": "x86_64",
+        "target_arch": "x86_64"
+    }
+}
+$ 
+$ mongo
+MongoDB shell version v4.4.29
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("193fa313-c5ef-48e8-ba05-2cd5a6a0b117") }
+MongoDB server version: 4.4.29
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+	https://docs.mongodb.com/
+Questions? Try the MongoDB Developer Community Forums
+	https://community.mongodb.com
+---
+The server generated these startup warnings when booting: 
+        2025-03-27T00:51:16.957+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+        2025-03-27T00:51:16.958+00:00: This server is bound to localhost. Remote systems will be unable to connect to this server. Start the server with --bind_ip <address> to specify which IP addresses it should serve responses from, or with --bind_ip_all to bind to all interfaces. If this behavior is desired, start the server with --bind_ip 127.0.0.1 to disable this warning
+        2025-03-27T00:51:16.958+00:00: /sys/kernel/mm/transparent_hugepage/enabled is 'always'. We suggest setting it to 'never'
+---
+> use pets[3G[Juse pets[11G
+switched to db pets
+> pets.o[3G[Jpets.[8Ginsert("[3G[Jpets.insert([15G{"dog"[3G[Jpets.insert({"dog[20G[3G[Jpets.insert({"do[19G[3G[Jpets.insert({"d[18G[3G[Jpets.insert({"[17G[3G[Jpets.insert({[16G"name",[3G[Jpets.insert({"name"[22G:"waldo","kind":sea[3G[Jpets.insert({"name":"waldo","kind":se[40G[3G[Jpets.insert({"name":"waldo","kind":s[39G[3G[Jpets.insert({"name":"waldo","kind":[38G"seal"})[3G[Jpets.insert({"name":"waldo","kind":"seal"})[46G
+uncaught exception: ReferenceError: pets is not defined :
+@(shell):1:1
+> [3G[Jpets.insert({"name":"waldo","kind":"seal"})[46G[3G[Jpets.insert[1;34m([0m{"name":"waldo","kind":"seal"})[45G[3G[Jpets.insert([1;34m{[0m"name":"waldo","kind":"seal"})[44G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[43G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[42G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[41G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[40G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[39G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[38G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[37G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[36G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[35G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[34G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[33G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[32G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[31G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[30G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[29G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[28G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[27G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[26G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[25G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[24G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[23G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[22G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[21G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[20G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[19G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[18G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[17G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[16G[3G[Jpets.insert({"name":"waldo","kind":"seal"[1;34m}[0m)[15G[3G[Jpets.insert({"name":"waldo","kind":"seal"}[1;34m)[0m[14G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[13G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[12G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[11G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[10G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[9G[3G[Jpets.insert({"name":"waldo","kind":"seal"})[8G[3G[Jpets.ainsert({"name":"waldo","kind":"seal"})[9G[3G[Jpets.aninsert({"name":"waldo","kind":"seal"})[10G[3G[Jpets.aniinsert({"name":"waldo","kind":"seal"})[11G[3G[Jpets.animinsert({"name":"waldo","kind":"seal"})[12G[3G[Jpets.animainsert({"name":"waldo","kind":"seal"})[13G[3G[Jpets.animalinsert({"name":"waldo","kind":"seal"})[14G[3G[Jpets.animalsinsert({"name":"waldo","kind":"seal"})[15G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[16G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[17G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[18G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[19G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[20G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[21G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"}[1;34m)[0m[22G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"[1;34m}[0m)[23G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[24G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[25G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[26G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[27G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[28G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[29G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[30G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[31G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[32G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[33G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[34G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[35G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[36G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[37G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[38G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[39G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[40G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[41G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[42G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[43G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[44G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[45G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[46G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[47G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[48G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[49G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[50G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[51G[3G[Jpets.animals.insert([1;34m{[0m"name":"waldo","kind":"seal"})[52G[3G[Jpets.animals.insert[1;34m([0m{"name":"waldo","kind":"seal"})[53G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[54G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[54G
+uncaught exception: ReferenceError: pets is not defined :
+@(shell):1:1
+> [3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[54G[3G[Jpets.animals.insert[1;34m([0m{"name":"waldo","kind":"seal"})[53G[3G[Jpets.animals.insert([1;34m{[0m"name":"waldo","kind":"seal"})[52G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[51G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[50G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[49G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[48G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[47G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[46G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[45G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[44G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[43G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[42G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[41G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[40G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[39G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[38G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[37G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[36G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[35G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[34G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[33G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[32G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[31G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[30G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[29G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[28G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[27G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[26G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[25G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[24G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"[1;34m}[0m)[23G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"}[1;34m)[0m[22G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[21G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[20G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[19G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[18G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[17G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[16G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[15G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[14G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[13G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[12G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[11G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[10G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[9G[3G[Jpets.animals.insert({"name":"waldo","kind":"seal"})[8G[3G[Jpetsanimals.insert({"name":"waldo","kind":"seal"})[7G[3G[Jpetanimals.insert({"name":"waldo","kind":"seal"})[6G[3G[Jpeanimals.insert({"name":"waldo","kind":"seal"})[5G[3G[Jpanimals.insert({"name":"waldo","kind":"seal"})[4G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[3G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[4G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[5G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[6G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[7G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[8G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[9G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[10G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[11G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[12G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[13G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[14G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[15G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[16G[3G[Janimals.insert({"name":"waldo","kind":"seal"}[1;34m)[0m[17G[3G[Janimals.insert({"name":"waldo","kind":"seal"[1;34m}[0m)[18G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[19G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[20G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[21G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[22G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[23G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[24G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[25G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[26G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[27G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[28G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[29G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[30G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[31G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[32G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[33G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[34G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[35G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[36G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[37G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[38G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[39G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[40G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[41G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[42G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[43G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[44G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[45G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[46G[3G[Janimals.insert([1;34m{[0m"name":"waldo","kind":"seal"})[47G[3G[Janimals.insert[1;34m([0m{"name":"waldo","kind":"seal"})[48G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[49G[3G[Janimals.insert({"name":"waldo","kind":"seal"})[49G
+uncaught exception: ReferenceError: animals is not defined :
+@(shell):1:1
+> nami[3G[Jnam[6G[3G[Jna[5G[3G[Jn[4G[3G[J[3Guse dep[3G[Juse de[9G[3G[Juse d[8G[3G[Juse [7Gpets[3G[Juse pets[11G
+switched to db pets
+> db.animals.insertOne({"name":"waldo","kind":"seal"})[3G[Jdb.animals.insertOne({"name":"waldo","kind":"seal"})[55G
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("67e4a2c8df389ac231dc59ab")
+}
+> db.a[3G[Jdb.[6Ganimals.find()[3G[Jdb.animals.find()[20G
+{ "_id" : ObjectId("67e4a2c8df389ac231dc59ab"), "name" : "waldo", "kind" : "seal" }
+> [3G[Jdb.animals.find()[20G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"seal"})[55G[3G[Jdb.animals.insertOne[1;34m([0m{"name":"waldo","kind":"seal"})[54G[3G[Jdb.animals.insertOne([1;34m{[0m"name":"waldo","kind":"seal"})[53G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"seal"})[52G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"sea"})[51G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"se"})[50G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"s"})[49G[3G[Jdb.animals.insertOne({"name":"waldo","kind":""})[48G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"e"})[49G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"el"})[50G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"ele"})[51G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"elep"})[52G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"eleph"})[53G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"elepha"})[54G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"elephan"})[55G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"elephant"})[56G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"elephant"})[55G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"elephant"})[54G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"elephant"})[53G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"elephant"})[52G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"elephant"})[51G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"elephant"})[50G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"elephant"})[49G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"elephant"})[48G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"elephant"})[47G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"elephant"})[46G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"elephant"})[45G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"elephant"})[44G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"elephant"})[43G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"elephant"})[42G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"elephant"})[41G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"elephant"})[40G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"elephant"})[39G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"elephant"})[38G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"elephant"})[37G[3G[Jdb.animals.insertOne({"name":"waldo","kind":"elephant"})[38G[3G[Jdb.animals.insertOne({"name":"wald","kind":"elephant"})[37G[3G[Jdb.animals.insertOne({"name":"wal","kind":"elephant"})[36G[3G[Jdb.animals.insertOne({"name":"wa","kind":"elephant"})[35G[3G[Jdb.animals.insertOne({"name":"w","kind":"elephant"})[34G[3G[Jdb.animals.insertOne({"name":"","kind":"elephant"})[33G[3G[Jdb.animals.insertOne({"name":"d","kind":"elephant"})[34G[3G[Jdb.animals.insertOne({"name":"di","kind":"elephant"})[35G[3G[Jdb.animals.insertOne({"name":"dim","kind":"elephant"})[36G[3G[Jdb.animals.insertOne({"name":"dimb","kind":"elephant"})[37G[3G[Jdb.animals.insertOne({"name":"dimbi","kind":"elephant"})[38G[3G[Jdb.animals.insertOne({"name":"dimb","kind":"elephant"})[37G[3G[Jdb.animals.insertOne({"name":"dim","kind":"elephant"})[36G[3G[Jdb.animals.insertOne({"name":"di","kind":"elephant"})[35G[3G[Jdb.animals.insertOne({"name":"d","kind":"elephant"})[34G[3G[Jdb.animals.insertOne({"name":"du","kind":"elephant"})[35G[3G[Jdb.animals.insertOne({"name":"dum","kind":"elephant"})[36G[3G[Jdb.animals.insertOne({"name":"dumb","kind":"elephant"})[37G[3G[Jdb.animals.insertOne({"name":"dumbo","kind":"elephant"})[38G[3G[Jdb.animals.insertOne({"name":"dumbo","kind":"elephant"})[39G[3G[Jdb.animals.insertOne({"name":"dumbo","kind":"elephant"})[40G[3G[Jdb.animals.insertOne({"name":"dumbo","kind":"elephant"})[41G[3G[Jdb.animals.insertOne({"name":"dumbo","kind":"elephant"})[42G[3G[Jdb.animals.insertOne({"name":"dumbo","kind":"elephant"})[43G[3G[Jdb.animals.insertOne({"name":"dumbo","kind":"elephant"})[44G[3G[Jdb.animals.insertOne({"name":"dumbo","kind":"elephant"})[45G[3G[Jdb.animals.insertOne({"name":"dumbo","kind":"elephant"})[46G[3G[Jdb.animals.insertOne({"name":"dumbo","kind":"elephant"})[47G[3G[Jdb.animals.insertOne({"name":"dumbo","kind":"elephant"})[48G[3G[Jdb.animals.insertOne({"name":"dumbo","kind":"elephant"})[49G[3G[Jdb.animals.insertOne({"name":"dumbo","kind":"elephant"})[50G[3G[Jdb.animals.insertOne({"name":"dumbo","kind":"elephant"})[51G[3G[Jdb.animals.insertOne({"name":"dumbo","kind":"elephant"})[52G[3G[Jdb.animals.insertOne({"name":"dumbo","kind":"elephant"})[53G[3G[Jdb.animals.insertOne({"name":"dumbo","kind":"elephant"})[54G[3G[Jdb.animals.insertOne({"name":"dumbo","kind":"elephant"})[55G[3G[Jdb.animals.insertOne({"name":"dumbo","kind":"elephant"})[56G[3G[Jdb.animals.insertOne([1;34m{[0m"name":"dumbo","kind":"elephant"})[57G[3G[Jdb.animals.insertOne[1;34m([0m{"name":"dumbo","kind":"elephant"})[58G[3G[Jdb.animals.insertOne({"name":"dumbo","kind":"elephant"})[59G[3G[Jdb.animals.insertOne({"name":"dumbo","kind":"elephant"})[59G
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("67e4a302df389ac231dc59ac")
+}
+> exit[3G[Jexit[7G
+bye
+$ mongo[K[K[K[K[Kpython create-dataas[K[Kbase.py
+Traceback (most recent call last):
+  File "/workspaces/advanced-database/topic-11-mongo-server/create-database.py", line 3, in <module>
+    from pymongo.server_ampi import ServerApi
+ModuleNotFoundError: No module named 'pymongo.server_ampi'
+$ pip --version
+pip 25.0.1 from /home/codespace/.python/current/lib/python3.12/site-packages/pip (python 3.12)
+$ pip install mongodb+r[Ksrv[K[K[K[K[K[K[K[K[K[K[Kpymongo
+Requirement already satisfied: pymongo in /home/codespace/.python/current/lib/python3.12/site-packages (4.11.2)
+Requirement already satisfied: dnspython<3.0.0,>=1.16.0 in /home/codespace/.python/current/lib/python3.12/site-packages (from pymongo) (2.7.0)
+$ pip install pymongo[C[C[C[C[C[C[6P--version[C[C[Cython create-database.py[C[Cmongo[K[C[Cpython create-database.py
+Traceback (most recent call last):
+  File "/workspaces/advanced-database/topic-11-mongo-server/create-database.py", line 3, in <module>
+    from pymongo.server_ampi import ServerApi
+ModuleNotFoundError: No module named 'pymongo.server_ampi'
+$ python create-database.py[C[C[C[6Pip install pymongo[C[C[C[C[C[C[6P--version[C[C[C[C[C[Cinstall pymongo+srv
+[31mERROR: Invalid requirement: 'pymongo+srv': Expected end or semicolon (after name and no valid version specifier)
+    pymongo+srv
+           ^[0m[31m
+[0m$ pip install pymongo+srv[C[C[Cython create-database.py
+Traceback (most recent call last):
+  File "/workspaces/advanced-database/topic-11-mongo-server/create-database.py", line 43, in <module>
+    create_database()
+  File "/workspaces/advanced-database/topic-11-mongo-server/create-database.py", line 15, in create_database
+    kind_collection.insert_many(
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pymongo/_csot.py", line 119, in csot_wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pymongo/synchronous/collection.py", line 975, in insert_many
+    blk.execute(write_concern, session, _Op.INSERT)
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pymongo/synchronous/bulk.py", line 751, in execute
+    return self.execute_command(generator, write_concern, session, operation)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pymongo/synchronous/bulk.py", line 604, in execute_command
+    _ = client._retryable_write(
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pymongo/synchronous/mongo_client.py", line 1896, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pymongo/synchronous/mongo_client.py", line 1782, in _retry_with_session
+    return self._retry_internal(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pymongo/_csot.py", line 119, in csot_wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pymongo/synchronous/mongo_client.py", line 1828, in _retry_internal
+    ).run()
+      ^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pymongo/synchronous/mongo_client.py", line 2565, in run
+    return self._read() if self._is_read else self._write()
+                                              ^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pymongo/synchronous/mongo_client.py", line 2687, in _write
+    return self._func(self._session, conn, self._retryable)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pymongo/synchronous/bulk.py", line 593, in retryable_bulk
+    self._execute_command(
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pymongo/synchronous/bulk.py", line 538, in _execute_command
+    result, to_send = self._execute_batch(bwc, cmd, ops, client)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pymongo/synchronous/bulk.py", line 462, in _execute_batch
+    result = self.write_command(bwc, cmd, request_id, msg, to_send, client)  # type: ignore[arg-type]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pymongo/synchronous/helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pymongo/synchronous/bulk.py", line 274, in write_command
+    reply = bwc.conn.write_command(request_id, msg, bwc.codec)  # type: ignore[misc]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pymongo/synchronous/pool.py", line 626, in write_command
+    helpers_shared._check_command_response(result, self.max_wire_version)
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pymongo/helpers_shared.py", line 247, in _check_command_response
+    raise OperationFailure(errmsg, code, response, max_wire_version)
+pymongo.errors.OperationFailure: BSON field 'insert.apiVersion' is an unknown field., full error: {'ok': 0.0, 'errmsg': "BSON field 'insert.apiVersion' is an unknown field.", 'code': 40415, 'codeName': 'Location40415'}
+$ python create-database.py
+[{'_id': ObjectId('67e4a4e79cc3aab82e55b4f4'),
+  'food': 'Dog food',
+  'kind_name': 'Dog',
+  'noise': 'Bark'},
+ {'_id': ObjectId('67e4a4e79cc3aab82e55b4f5'),
+  'food': 'Cat food',
+  'kind_name': 'Cat',
+  'noise': 'Meow'},
+ {'_id': ObjectId('67e4a4e79cc3aab82e55b4f6'),
+  'food': 'Fish flakes',
+  'kind_name': 'Fish',
+  'noise': 'Blub'}]
+[{'_id': ObjectId('67e4a4e79cc3aab82e55b4f7'),
+  'age': 3,
+  'kind_id': ObjectId('67e4a4e79cc3aab82e55b4f4'),
+  'name': 'Suzy',
+  'owner': 'Greg'},
+ {'_id': ObjectId('67e4a4e79cc3aab82e55b4f8'),
+  'age': 2,
+  'kind_id': ObjectId('67e4a4e79cc3aab82e55b4f5'),
+  'name': 'Sandy',
+  'owner': 'Steve'},
+ {'_id': ObjectId('67e4a4e79cc3aab82e55b4f9'),
+  'age': 1,
+  'kind_id': ObjectId('67e4a4e79cc3aab82e55b4f4'),
+  'name': 'Dorothy',
+  'owner': 'Elizabeth'},
+ {'_id': ObjectId('67e4a4e79cc3aab82e55b4fa'),
+  'age': 4,
+  'kind_id': ObjectId('67e4a4e79cc3aab82e55b4f4'),
+  'name': 'Heidi',
+  'owner': 'David'}]
+done.
+$ python create-database.py[C[C[C[2Pip install pymongo+srv[C[C[Cython create-database.py[C[C[C[6Pip install pymongo[C[C[C[C[C[C[6P--version[C[C[Cython create-database.py[C[Cmongo[K --version[C[C[C[C[C[C[Cd --versionfork --logpath /var/log/mongodb.log[C[C[C[C[C[C[C[C[C[C[Cversion[K[C[C[C[C[C[C[C[1P --version[C[C[C[C[C[C[C[K
+MongoDB shell version v4.4.29
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("b251b40a-e004-4479-a916-0943ba8fa354") }
+MongoDB server version: 4.4.29
+---
+The server generated these startup warnings when booting: 
+        2025-03-27T00:51:16.957+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+        2025-03-27T00:51:16.958+00:00: This server is bound to localhost. Remote systems will be unable to connect to this server. Start the server with --bind_ip <address> to specify which IP addresses it should serve responses from, or with --bind_ip_all to bind to all interfaces. If this behavior is desired, start the server with --bind_ip 127.0.0.1 to disable this warning
+        2025-03-27T00:51:16.958+00:00: /sys/kernel/mm/transparent_hugepage/enabled is 'always'. We suggest setting it to 'never'
+---
+> use ped[3G[Juse pe[9Gts_db[3G[Juse pets_db[14G
+switched to db pets_db
+> pets.find()[3G[Jpets.find()[14G
+uncaught exception: ReferenceError: pets is not defined :
+@(shell):1:1
+> [3G[Jpets.find()[14G[3G[Jpets.find[1;34m([0m)[13G[3G[Jpets.find([1;34m)[0m[12G[3G[Jpets.find()[11G[3G[Jpets.find()[10G[3G[Jpets.find()[9G[3G[Jpets.find()[8G[3G[Jpets.find()[7G[3G[Jpets.find()[6G[3G[Jpets.find()[5G[3G[Jpets.find()[4G[3G[Jpets.find()[3G[3G[Jdpets.find()[4G[3G[Jdbpets.find()[5G[3G[Jdb.pets.find()[6G[3G[Jdb.pets.find()[7G[3G[Jdb.pets.find()[8G[3G[Jdb.pets.find()[9G[3G[Jdb.pets.find()[10G[3G[Jdb.pets.find()[11G[3G[Jdb.pets.find()[12G[3G[Jdb.pets.find()[13G[3G[Jdb.pets.find()[14G[3G[Jdb.pets.find([1;34m)[0m[15G[3G[Jdb.pets.find[1;34m([0m)[16G[3G[Jdb.pets.find()[17G[3G[Jdb.pets.find()[17G
+> [3G[Jdb.pets.find()[17G[3G[Jpets.find()[14G[3G[Juse pets_db[14G[3G[Jpets.find()[14G[3G[Jdb.pets.find()[17G[3G[Jdb.pets.find[1;34m([0m)[16G[3G[Jdb.pets.find([1;34m)[0m[15G[3G[Jdb.pets.find()[14G[3G[Jdb.pets.find()[13G[3G[Jdb.pets.find()[12G[3G[Jdb.pets.find()[11G[3G[Jdb.pets.find()[10G[3G[Jdb.pets.find()[9G[3G[Jdb.pets.find()[8G[3G[Jdb.pets.find()[7G[3G[Jdb.pets.find()[6G[3G[Jdb.p
