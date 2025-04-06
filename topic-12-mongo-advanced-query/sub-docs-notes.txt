@@ -1,0 +1,37 @@
+If I have owners:
+
+owners = {
+...
+   pets:[pet_id, pet_id]
+
+
+}
+
+pets = {
+    [owner_id],
+    [owner_id],
+    [owner_id],
+    [owner_id],
+}
+
+Here each pet has exactly one owner (though that owner may be none)
+
+{
+  "_id": "60f5a3d1e3a8b12a3c456789",
+  "name": "Jane Doe",
+  "email": "jane.doe@example.com",
+  "pets": [
+    {
+      "name": "Buddy",
+      "age": 5,
+      "kind": "Dog",
+      "breed": "Golden Retriever"
+    },
+    {
+      "name": "Whiskers",
+      "age": 3,
+      "kind": "Cat",
+      "breed": "Siamese"
+    }
+  ]
+}
