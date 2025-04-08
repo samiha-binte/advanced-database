@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Post Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="mt-4">Post Details</h1>
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ post.author.username }}</h5>
+          <p class="card-text">{{ post.content }}</p>
+          <p>
+            <small>Tags: {{ post.tags|join(', ') }}</small>
+          </p>
+          <a href="{{ url_for('post_update', post_id=post.id) }}" class="btn btn-warning">Edit Post</a>
+          <a href="{{ url_for('post_delete', post_id=post.id) }}" class="btn btn-danger">Delete Post</a>
+        </div>
+      </div>
+      
+      <!-- Display comments -->
+      <h3>Comments</h3>
+      {% for comment in comments %}
+      <div class="media mb-3">
+        <div class="media-body">
+          <h5 class="mt-0">{{ comment.author.username }}</h5>
+          <p>{{ comment.content }}</p>
+          <a class="btn btn-sm btn-danger" href="{{ url_for('comment_delete', comment_id=comment.id, post_id=post.id) }}">Delete</a>
+        </div>
+      </div>
+      {% endfor %}
+      
+      <!-- Form to add a comment -->
+      <h4>Add a Comment</h4>
+      <form action="{{ url_for('comment_create') }}" method="post">
+        <input type="hidden" name="post_id" value="{{ post.id }}">
+        <div class="form-group">
+          <label for="username">Your Name</label>
+          <input type="text" name="username" class="form-control" placeholder="Anonymous">
+        </div>
+        <div class="form-group">
+          <label for="content">Comment</label>
+          <textarea name="content" class="form-control" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Post Comment</button>
+      </form>
+      
+      <a href="{{ url_for('feed') }}" class="btn btn-link mt-3">Back to Feed</a>
+    </div>
+  </body>
+</html>
