@@ -9,7 +9,7 @@ class WordCount(MapReduce):
             yield (word,1)
 
     def combiner(self, key, values):
-            yield key, sum(values)
+        yield key, sum(values)
 
     def reducer(self, key, values):
         yield key, sum(values)
@@ -29,3 +29,7 @@ output = WordCount.run(input)
 for item in output:
     print (item)
 
+for item in output:
+    word, n = item
+    if n > 100:
+        print(item)
