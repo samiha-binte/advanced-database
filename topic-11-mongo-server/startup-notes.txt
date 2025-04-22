@@ -1,0 +1,7 @@
+After installing mongod with apt-get
+
+$ sudo mkdir -p /data/db
+$ sudo chown -R "$(whoami)":"$(whoami)" /data/db
+$ mongod --dbpath /data/db --bind_ip_all --logpath /data/db/mongod.log --fork
+
+This seems to work.
