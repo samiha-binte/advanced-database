@@ -1,34 +1,30 @@
-# 1. Stop any running mongod (if you started it manually)
-pkill mongod
+# INSTALLING MONGODB ON A NEW CODESPACE
 
-# 2. Remove the Ubuntu “mongodb” packages
-sudo apt-get remove --purge -y mongodb mongodb-server mongodb-server-core
+# 1. Prepare APT for HTTPS & GPG
+sudo apt-get update
+sudo apt-get install -y gnupg apt-transport-https ca-certificates curl
 
-# 3. Clean up leftover dependencies
-sudo apt-get autoremove -y
+# 2. Import and de‑armor MongoDB’s 7.0 signing key
+curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc \
+  | sudo gpg --dearmor -o /usr/share/keyrings/mongodb-server-7.0.gpg
 
-# 4. (Optional) Wipe old data/log directories if you don’t need them
-sudo rm -rf /var/lib/mongodb /var/log/mongodb /data/db
-
-Installing new MongoDB
-
-# 1. Import the MongoDB public GPG key:
-wget -qO - https://www.mongodb.org/static/pgp/server-7.0.asc | sudo apt-key add -
-
-# 2. Add the MongoDB 7.0 repo (for Ubuntu 22.04 “jammy”—adjust if you’re on a different release):
-echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/7.0 multiverse" \
+# 3. Add the MongoDB 7.0 repo for focal
+echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] \
+  https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/7.0 multiverse" \
   | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
 
-# 3. Update and install mongodb-org (this pulls in the latest 7.0.x packages):
+# 4. Refresh package lists
 sudo apt-get update
-sudo apt-get install -y mongodb-org
 
-# 4. (Re)create your data directory and give yourself ownership:
-sudo mkdir -p /data/db
-sudo chown -R "$(whoami)":"$(whoami)" /data/db
+# 5. Install the server & shell
+sudo apt-get install -y mongodb-org mongodb-mongosh
 
-# 5. Start mongod manually (systemd isn’t available inside Codespaces):
-mongod --dbpath /data/db --bind_ip_all --logpath /data/db/mongod.log --fork
+# 6. Ensure data & log directories exist and belong to mongodb
+sudo mkdir -p /var/lib/mongodb /var/log/mongodb /data/db
+sudo chown -R mongodb:mongodb /var/lib/mongodb /var/log/mongodb /data/db
 
-# 6. Test the connection:
-mongo --quiet --eval "db.runCommand({ ping: 1 })"
+# 7. Launch mongod via the shipped config (backgrounded)
+sudo mongod --config /etc/mongod.conf --fork
+
+# 8. Verify with the new shell
+mongosh --eval "db.runCommand({ ping: 1 })"

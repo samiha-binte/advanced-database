@@ -2,10 +2,10 @@ from pymongo import MongoClient, GEOSPHERE
 import json
 
 
-uri = "mongodb+srv://greg:alabama@class-demo-cluster.gvxjh.mongodb.net/?appName=Class-Demo-Cluster"
+# uri = "mongodb+srv://greg:alabama@class-demo-cluster.gvxjh.mongodb.net/?appName=Class-Demo-Cluster"
 
 # Create a new client and connect to the server
-client = MongoClient(uri)
+client = MongoClient()
 
 db = client.geospatial_demo
 places = db.places
