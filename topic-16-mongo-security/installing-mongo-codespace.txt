@@ -1,0 +1,28 @@
+# 1. Prepare APT for HTTPS & GPG
+sudo apt-get update
+sudo apt-get install -y gnupg apt-transport-https ca-certificates curl
+
+# 2. Import and de‑armor MongoDB’s 7.0 signing key
+curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc \
+  | sudo gpg --dearmor -o /usr/share/keyrings/mongodb-server-7.0.gpg
+
+# 3. Add the MongoDB 7.0 repo for focal
+echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] \
+  https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/7.0 multiverse" \
+  | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+
+# 4. Refresh package lists
+sudo apt-get update
+
+# 5. Install the server & shell
+sudo apt-get install -y mongodb-org mongodb-mongosh
+
+# 6. Ensure data & log directories exist and belong to mongodb
+sudo mkdir -p /var/lib/mongodb /var/log/mongodb /data/db
+sudo chown -R mongodb:mongodb /var/lib/mongodb /var/log/mongodb /data/db
+
+# 7. Launch mongod via the shipped config (backgrounded)
+sudo mongod --config /etc/mongod.conf --fork
+
+# 8. Verify with the new shell
+mongosh --eval "db.runCommand({ ping: 1 })"
